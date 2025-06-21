@@ -59,9 +59,9 @@ const Index = () => {
             <div className="flex items-center gap-3">
               <div className="relative">
                 <img 
-                  src="/lovable-uploads/4969392e-2631-4f2a-a161-de3a44d4f3d9.png" 
+                  src="/lovable-uploads/3ae34102-7bfe-4f32-9b52-616c9fc3d230.png" 
                   alt="CodeStudio Logo" 
-                  className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-teal-400 p-1"
+                  className="h-12 w-12 rounded-full"
                 />
               </div>
               <div>

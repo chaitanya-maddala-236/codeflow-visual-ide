@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -238,13 +237,14 @@ const IDE = () => {
             >
               <div className="flex items-center gap-2">
                 <img 
-                  src="/lovable-uploads/4969392e-2631-4f2a-a161-de3a44d4f3d9.png" 
+                  src="/lovable-uploads/3ae34102-7bfe-4f32-9b52-616c9fc3d230.png" 
                   alt="CodeStudio" 
                   className="h-6 w-6 rounded-full"
                 />
                 CodeStudio
               </div>
             </Button>
+            
             <Separator orientation="vertical" className="h-6 bg-slate-600" />
             
             <select 
