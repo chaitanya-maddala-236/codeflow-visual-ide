@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { Code, FileText, GitBranch, Play, Eye, Users, Settings, Plus, Search, Folder, Clock } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +12,10 @@ import { useNavigate } from 'react-router-dom';
 const Index = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
+  const [codeVisualization, setCodeVisualization] = useState(true);
+  const [realtimeCompilation, setRealtimeCompilation] = useState(true);
+  const [collaboration, setCollaboration] = useState(false);
+  const [gitIntegration, setGitIntegration] = useState(true);
 
   const recentProjects = [
     { id: 1, name: 'React Dashboard', language: 'JavaScript', lastModified: '2 hours ago', status: 'active' },
@@ -52,8 +57,12 @@ const Index = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg">
-                <Code className="h-6 w-6 text-white" />
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/4969392e-2631-4f2a-a161-de3a44d4f3d9.png" 
+                  alt="CodeStudio Logo" 
+                  className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-teal-400 p-1"
+                />
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-white">CodeStudio</h1>
@@ -160,6 +169,58 @@ const Index = () => {
 
           {/* Sidebar */}
           <div className="space-y-6">
+            {/* Feature Toggles */}
+            <Card className="bg-slate-800/50 border-slate-700">
+              <CardHeader>
+                <CardTitle className="text-white">Features</CardTitle>
+                <CardDescription className="text-slate-400">
+                  Toggle advanced development features
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3 text-slate-300">
+                    <Eye className="h-5 w-5 text-emerald-400" />
+                    <span className="text-sm">Code Visualization</span>
+                  </div>
+                  <Switch 
+                    checked={codeVisualization} 
+                    onCheckedChange={setCodeVisualization}
+                  />
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3 text-slate-300">
+                    <Play className="h-5 w-5 text-blue-400" />
+                    <span className="text-sm">Real-time Compilation</span>
+                  </div>
+                  <Switch 
+                    checked={realtimeCompilation} 
+                    onCheckedChange={setRealtimeCompilation}
+                  />
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3 text-slate-300">
+                    <Users className="h-5 w-5 text-purple-400" />
+                    <span className="text-sm">Collaboration</span>
+                  </div>
+                  <Switch 
+                    checked={collaboration} 
+                    onCheckedChange={setCollaboration}
+                  />
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3 text-slate-300">
+                    <GitBranch className="h-5 w-5 text-orange-400" />
+                    <span className="text-sm">Git Integration</span>
+                  </div>
+                  <Switch 
+                    checked={gitIntegration} 
+                    onCheckedChange={setGitIntegration}
+                  />
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Project Templates */}
             <Card className="bg-slate-800/50 border-slate-700">
               <CardHeader>
@@ -187,31 +248,6 @@ const Index = () => {
                     </div>
                   </div>
                 ))}
-              </CardContent>
-            </Card>
-
-            {/* Features Overview */}
-            <Card className="bg-slate-800/50 border-slate-700">
-              <CardHeader>
-                <CardTitle className="text-white">Features</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center gap-3 text-slate-300">
-                  <Eye className="h-5 w-5 text-emerald-400" />
-                  <span className="text-sm">Code Visualization</span>
-                </div>
-                <div className="flex items-center gap-3 text-slate-300">
-                  <Play className="h-5 w-5 text-blue-400" />
-                  <span className="text-sm">Real-time Compilation</span>
-                </div>
-                <div className="flex items-center gap-3 text-slate-300">
-                  <Users className="h-5 w-5 text-purple-400" />
-                  <span className="text-sm">Collaboration</span>
-                </div>
-                <div className="flex items-center gap-3 text-slate-300">
-                  <GitBranch className="h-5 w-5 text-orange-400" />
-                  <span className="text-sm">Git Integration</span>
-                </div>
               </CardContent>
             </Card>
           </div>

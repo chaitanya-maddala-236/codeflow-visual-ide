@@ -159,7 +159,7 @@ export const VisualizationPanel = ({ code }: VisualizationPanelProps) => {
           <div className="flex items-center gap-3 p-3 bg-slate-800 rounded">
             <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
             <div className="flex-1">
-              <div className="text-sm text-white">numbers → map(x => x * 2)</div>
+              <div className="text-sm text-white">numbers → map(x ={`>`} x * 2)</div>
               <div className="text-xs text-slate-400">Array transformation</div>
             </div>
           </div>
