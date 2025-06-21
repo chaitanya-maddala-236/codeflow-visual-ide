@@ -26,7 +26,7 @@ import {
   Download,
   Users,
   GitCommit,
-  GitPull
+  GitPullRequest
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { CodeEditor } from '@/components/CodeEditor';
@@ -36,6 +36,12 @@ import { ConsolePanel } from '@/components/ConsolePanel';
 import CompilerService, { SUPPORTED_LANGUAGES } from '@/services/CompilerService';
 import GitService from '@/services/GitService';
 import CollaborationService from '@/services/CollaborationService';
+
+interface ConsoleMessage {
+  type: 'info' | 'success' | 'warning' | 'error' | 'output' | 'system';
+  message: string;
+  timestamp: Date;
+}
 
 const IDE = () => {
   const navigate = useNavigate();
@@ -62,7 +68,7 @@ const IDE = () => {
     { name: 'utils.js', path: '/src/utils.js', modified: false },
   ]);
 
-  const [consoleOutput, setConsoleOutput] = useState([
+  const [consoleOutput, setConsoleOutput] = useState<ConsoleMessage[]>([
     { type: 'info', message: 'CodeStudio IDE initialized', timestamp: new Date() },
     { type: 'system', message: 'Ready to compile and visualize your code', timestamp: new Date() },
   ]);
@@ -294,7 +300,6 @@ const IDE = () => {
                     setCodeVisualization(checked);
                     setShowVisualization(checked);
                   }}
-                  size="sm"
                 />
                 <span className="text-xs text-slate-400">Visualization</span>
               </div>
@@ -303,7 +308,6 @@ const IDE = () => {
                 <Switch 
                   checked={realtimeCompilation} 
                   onCheckedChange={setRealtimeCompilation}
-                  size="sm"
                 />
                 <span className="text-xs text-slate-400">Real-time</span>
               </div>
@@ -312,7 +316,6 @@ const IDE = () => {
                 <Switch 
                   checked={collaboration} 
                   onCheckedChange={setCollaboration}
-                  size="sm"
                 />
                 <span className="text-xs text-slate-400">Collab</span>
               </div>
@@ -321,7 +324,6 @@ const IDE = () => {
                 <Switch 
                   checked={gitIntegration} 
                   onCheckedChange={setGitIntegration}
-                  size="sm"
                 />
                 <span className="text-xs text-slate-400">Git</span>
               </div>
